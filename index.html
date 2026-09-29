@@ -694,10 +694,10 @@
   });
   
   const routePlaces = [
-    ['หมู่บ้านช้างบ้านตากลาง', 15.287833, 103.485667, '15.287833,103.485667 หมู่บ้านช้างบ้านตากลาง สุรินทร์'],
-    ['ปราสาทศีขรภูมิ', 14.937, 103.797, 'ปราสาทศีขรภูมิ สุรินทร์'],
+    ['หมู่บ้านช้างบ้านตากลาง', 15.287833, 103.485667, '15.287833,103.485667 หมู่บ้านช้างบ้านตากลาง สุรินทร์', 'https://maps.app.goo.gl/eDDkZC4jYzxVgX1Z7'],
+    ['ปราสาทศีขรภูมิ', 14.937, 103.797, 'ปราสาทศีขรภูมิ สุรินทร์', 'https://maps.app.goo.gl/jfWrNcDPR4kJfgiz9'],
     ['หมู่บ้านทอผ้าไหมบ้านท่าสว่าง', 14.9553, 103.4723, 'หมู่บ้านทอผ้าไหมบ้านท่าสว่าง สุรินทร์'],
-    ['วนอุทยานพนมสวาย', 14.762870, 103.374322, '14.762870,103.374322 วนอุทยานพนมสวาย สุรินทร์'],
+    ['วนอุทยานพนมสวาย', 14.762870, 103.374322, '14.762870,103.374322 วนอุทยานพนมสวาย สุรินทร์', 'https://maps.app.goo.gl/CFV9fqXRhexVudCU7'],
     ['อนุสาวรีย์พระยาสุรินทร์ฯ', 14.878120, 103.489420, '14.878120,103.489420 อนุสาวรีย์พระยาสุรินทร์ภักดีศรีณรงค์จางวาง สุรินทร์'],
     ['ปราสาทบ้านพลวง', 14.610267, 103.424358, '14.610267,103.424358 ปราสาทบ้านพลวง โบราณสถาน อำเภอปราสาท สุรินทร์'],
     ['ตลาดไนท์บาร์ซ่า สุรินทร์', 14.886330, 103.492390, '14.886330,103.492390 ตลาดไนท์บาร์ซ่า สุรินทร์']
@@ -710,7 +710,8 @@
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'© OpenStreetMap contributors'}).addTo(surinLeafletMap);
     routePlaces.forEach((p,i)=>{
       const marker = L.marker([p[1],p[2]], {icon:L.divIcon({className:'route-pin', html:`<span>${i+1}</span>`, iconSize:[32,32], iconAnchor:[16,16], popupAnchor:[0,-18]})}).addTo(surinLeafletMap);
-      marker.bindPopup(`<strong>${p[0]}</strong><br><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p[3])}">เปิดใน Google Maps ↗</a>`);
+      const mapUrl = p[4] || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p[3])}`;
+      marker.bindPopup(`<strong>${p[0]}</strong><br><a target="_blank" rel="noopener" href="${mapUrl}">เปิดใน Google Maps ↗</a>`);
     });
     requestAnimationFrame(()=>surinLeafletMap.invalidateSize({pan:false}));
     setTimeout(()=>surinLeafletMap.invalidateSize({pan:false}), 150);
