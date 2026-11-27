@@ -67,14 +67,14 @@
 
   /* ================= COVER (sunset / silhouette poster) ================= */
   .cover{
-    background: #171225 url("thre1.jpg") center/cover no-repeat;
+    background: #171225 url("assets/images/thre1.jpg") center/cover no-repeat;
     color:var(--cream);
     justify-content:center;
     align-items:center;
     padding:0;
   }
   .cover2{
-    background: #171225 url("map1.jpg") center/cover no-repeat;
+    background: #171225 url("assets/images/map1.jpg") center/cover no-repeat;
     color:var(--cream);
     justify-content:center;
     align-items:center;
@@ -186,7 +186,7 @@
   .toc{
     background:
       linear-gradient(135deg, rgba(255,248,232,.72) 0%, rgba(255,245,226,.56) 38%, rgba(255,242,220,.42) 100%),
-      url('map1.jpg') center/cover no-repeat;
+      url('assets/images/map1.jpg') center/cover no-repeat;
     color:var(--ink);
   }
   .toc .weave{color:var(--noon); opacity:.16;}
@@ -284,6 +284,28 @@
   }
   .stop-visual .icon{width:38%; max-width:280px; opacity:.95;}
   .stop-visual img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
+  .stop-visual img[hidden]{display:none;}
+  .gallery-placeholder{
+    position:absolute; inset:0; z-index:2; display:grid; place-content:center;
+    gap:.55rem; text-align:center; color:#fff;
+    background:radial-gradient(ellipse at center, rgba(91,106,82,.94), rgba(34,45,46,.98));
+  }
+  .gallery-placeholder[hidden]{display:none;}
+  .gallery-placeholder span{font:500 .72rem 'Kanit',sans-serif; letter-spacing:.14em; color:#f0d398;}
+  .gallery-placeholder strong{font:1.15rem 'Chonburi',serif;}
+  .stop-visual .gallery-controls{
+    position:absolute; right:1.5rem; bottom:1.5rem; z-index:4;
+    display:flex; align-items:center; gap:.75rem; padding:.45rem;
+    border:1px solid rgba(255,255,255,.35); border-radius:999px;
+    background:rgba(23,30,48,.72); color:#fff; backdrop-filter:blur(8px);
+  }
+  .gallery-controls button{
+    display:grid; place-items:center; width:36px; height:36px; border:0;
+    border-radius:50%; background:rgba(255,255,255,.16); color:inherit;
+    font:inherit; font-size:1.25rem; cursor:pointer; transition:background .2s;
+  }
+  .gallery-controls button:hover{background:rgba(255,255,255,.32);}
+  .gallery-count{min-width:3.4rem; text-align:center; font:500 .72rem 'Kanit',sans-serif; letter-spacing:.06em;}
   .stop-visual .period-badge{
     position:absolute; top:6%; left:8%; font-family:'Kanit',sans-serif; font-size:.75rem;
     letter-spacing:.15em; color:var(--cream); opacity:.85;
@@ -299,6 +321,7 @@
   .stop-content .eyebrow{font-family:'Kanit',sans-serif; font-size:.75rem; letter-spacing:.14em; margin-bottom:.9rem;}
   .stop-content h2{font-size:clamp(1.6rem,3vw,2.3rem); color:var(--ink); margin-bottom:1.1rem; line-height:1.25;}
   .stop-content p.desc{color:var(--ink-soft); line-height:2; font-size:.98rem; margin-bottom:1.3rem;}
+  .visit-fee{font-size:.84rem; line-height:1.75; color:var(--ink-soft); margin:-.5rem 0 1.15rem; padding-left:.75rem; border-left:3px solid var(--accent-deep);}
   .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.4rem;}
   .chip{
     font-family:'Kanit',sans-serif; font-size:.72rem; padding:.4rem .85rem; border-radius:100px;
@@ -342,6 +365,7 @@
     #book{transition-duration:.7s;}
     .stop-inner{grid-template-columns:1fr; grid-template-rows: 40% 60%;}
     .stop-visual .icon{width:32%;}
+    .stop-visual .gallery-controls{right:.8rem; bottom:.8rem;}
     .route-map-layout{grid-template-columns:1fr; grid-template-rows:42% 58%;}
     .route-sidebar{padding:1.4rem 2rem;}
     .route-sidebar .note{margin-bottom:.6rem;}
@@ -447,16 +471,17 @@
   <!-- 3 : หมู่บ้านช้างบ้านตากลาง -->
   <section class="page stop" data-theme="dawn">
     <div class="stop-inner">
-      <div class="stop-visual" style="background:linear-gradient(160deg, var(--dawn), var(--dawn-deep));">
+      <div class="stop-visual" data-images="assets/images/03-Picsart-AiImageEnhancer.jpg|assets/images/03.jpg|__placeholder__" style="background:linear-gradient(160deg, var(--dawn), var(--dawn-deep));">
         <div class="weave"></div>
         <div class="period-badge label"></div>
         <div class="idx"></div>
-        <img src="03-Picsart-AiImageEnhancer.jpg" alt="ศูนย์คชศึกษา หมู่บ้านช้างบ้านตากลาง">
+        <img src="assets/images/03-Picsart-AiImageEnhancer.jpg" alt="ศูนย์คชศึกษา หมู่บ้านช้างบ้านตากลาง">
       </div>
       <div class="stop-content" style="--accent:var(--dawn); --accent-deep:var(--dawn-deep);">
         <p class="eyebrow" style="color:var(--dawn-deep)"></p>
         <h2 class="display">ศูนย์คชศึกษา หมู่บ้านช้างบ้านตากลาง</h2>
-        <p class="desc">จุดเริ่มต้นของ "ถิ่นช้างใหญ่" ตามคำขวัญจังหวัด ชุมชนชาวกูยที่สืบทอดภูมิปัญญาการเลี้ยงและฝึกช้างมาอย่างยาวนาน นักท่องเที่ยวจะได้เห็นวิถีชีวิตของคนกับช้างที่ผูกพันกันมาหลายชั่วอายุคน ก่อนต่อยอดไปยังศูนย์คชศึกษาในบริเวณใกล้เคียง</p>
+        <p class="desc">บ้านตากลางเป็นชุมชนชาวกูยที่มีความผูกพันกับช้างและสืบทอดภูมิปัญญาการดูแลช้างมายาวนาน จนกลายเป็นหนึ่งในภาพจำของสุรินทร์ที่ได้ชื่อว่า “ถิ่นช้างใหญ่” ที่ศูนย์คชศึกษา ผู้มาเยือนจะได้เรียนรู้เรื่องช้างและวิถีชีวิตของคนกับช้างผ่านพื้นที่จัดแสดงและกิจกรรมของชุมชน บรรยากาศทำให้เห็นความสัมพันธ์ที่เกิดจากการดูแลกันในชีวิตประจำวัน ควรปฏิบัติตามคำแนะนำของเจ้าหน้าที่ รักษาระยะห่าง และตรวจสอบรอบกิจกรรมก่อนเดินทาง</p>
+        <p class="visit-fee"><strong>ค่าเข้าศูนย์:</strong> ไม่เสียค่าใช้จ่าย<br><strong>บัตรชมการแสดงช้าง:</strong> ผู้ใหญ่ 50 บาท, เด็ก 20 บาท, ชาวต่างชาติ 100 บาท<br>ราคาอาจเปลี่ยนแปลง ควรสอบถามสถานที่ก่อนเดินทาง</p>
         <div class="chips">
           <span class="chip">ชมวิถีชีวิตคนเลี้ยงช้าง</span>
           <span class="chip">ศูนย์คชศึกษา</span>
@@ -470,16 +495,17 @@
   <!-- 4 : ปราสาทศีขรภูมิ -->
   <section class="page stop" data-theme="dawn2">
     <div class="stop-inner">
-      <div class="stop-visual" style="background:linear-gradient(160deg, var(--dawn-deep), var(--noon-deep));">
+      <div class="stop-visual" data-images="assets/images/04-Picsart-AiImageEnhancer.jpg|assets/images/04.jpg|__placeholder__" style="background:linear-gradient(160deg, var(--dawn-deep), var(--noon-deep));">
         <div class="weave"></div>
         <div class="period-badge label"></div>
         <div class="idx"></div>
-        <img src="04-Picsart-AiImageEnhancer.jpg" alt="ปราสาทศีขรภูมิ">
+        <img src="assets/images/04-Picsart-AiImageEnhancer.jpg" alt="ปราสาทศีขรภูมิ">
       </div>
       <div class="stop-content" style="--accent:var(--dawn-deep); --accent-deep:var(--noon-deep);">
         <p class="eyebrow" style="color:var(--noon-deep)"></p>
         <h2 class="display">ปราสาทศีขรภูมิ</h2>
-        <p class="desc">โบราณสถานที่สะท้อน "รวยปราสาท" ในคำขวัญจังหวัดได้ชัดเจนที่สุด ปราสาทหินทรายห้าหลังเรียงบนฐานเดียวกัน สลักลวดลายทับหลังอันวิจิตร เป็นหลักฐานของอารยธรรมขอมโบราณที่เคยรุ่งเรืองในภาคอีสานใต้ เหมาะสำหรับเดินชมและถ่ายภาพในช่วงแดดเช้า</p>
+        <p class="desc">ปราสาทศีขรภูมิเป็นโบราณสถานสำคัญที่สะท้อนวลี “รวยปราสาท” ในคำขวัญจังหวัดได้อย่างชัดเจน จุดเด่นคือปรางค์อิฐและหินทรายห้าหลังตั้งอยู่บนฐานเดียวกัน โดยองค์กลางมีขนาดโดดเด่น รายละเอียดลวดลายแกะสลักและทับหลังช่วยให้เห็นฝีมือช่างและอิทธิพลศิลปะขอมที่สืบทอดในอีสานใต้ ลองเดินชมรอบฐานเพื่อสังเกตองค์ประกอบจากหลายมุม ช่วงเช้าแสงนุ่มและอากาศมักเหมาะกับการถ่ายภาพ ควรสวมรองเท้าที่เดินสะดวกและไม่ปีนป่ายบนโบราณสถาน</p>
+        <p class="visit-fee"><strong>ค่าเข้าชม:</strong> คนไทย 10 บาท, ชาวต่างชาติ 80 บาท</p>
         <div class="chips">
           <span class="chip">สถาปัตยกรรมขอม</span>
           <span class="chip">ทับหลังโบราณ</span>
@@ -493,16 +519,16 @@
   <!-- 5 : หมู่บ้านทอผ้าไหมบ้านท่าสว่าง -->
   <section class="page stop" data-theme="noon">
     <div class="stop-inner">
-      <div class="stop-visual" style="background:linear-gradient(160deg, var(--silk), var(--noon-deep));">
+      <div class="stop-visual" data-images="assets/images/05-Picsart-AiImageEnhancer.jpg|assets/images/05.jpg|__placeholder__" style="background:linear-gradient(160deg, var(--silk), var(--noon-deep));">
         <div class="weave"></div>
         <div class="period-badge label"></div>
         <div class="idx"></div>
-        <img src="05-Picsart-AiImageEnhancer.jpg" alt="หมู่บ้านทอผ้าไหมบ้านท่าสว่าง">
+        <img src="assets/images/05-Picsart-AiImageEnhancer.jpg" alt="หมู่บ้านทอผ้าไหมบ้านท่าสว่าง">
       </div>
       <div class="stop-content" style="--accent:var(--silk); --accent-deep:var(--noon-deep);">
         <p class="eyebrow" style="color:var(--noon-deep)"></p>
         <h2 class="display">หมู่บ้านทอผ้าไหมบ้านท่าสว่าง</h2>
-        <p class="desc">แหล่งกำเนิด "ผ้าไหม" ที่ขึ้นชื่อที่สุดของจังหวัด ด้วยลายทอโบราณอย่าง "หางกระรอก" ที่ต้องใช้ตะกอนับพันเส้นบนกี่ทอมือ ผ้าไหมที่นี่เคยใช้ตัดเป็นฉลองพระองค์และของขวัญระดับประเทศ นักท่องเที่ยวได้ชมกระบวนการทอมือทุกขั้นตอนแบบใกล้ชิด</p>
+        <p class="desc">บ้านท่าสว่างเป็นแหล่งทอผ้าไหมที่มีชื่อเสียงของสุรินทร์ โดดเด่นด้วยงานทอมือที่ต้องอาศัยความชำนาญ ความประณีต และการจัดเส้นไหมอย่างละเอียด ผู้มาเยือนสามารถเรียนรู้ตั้งแต่การเตรียมเส้นไหม การขึ้นกี่ ไปจนถึงการเกิดลวดลายบนผืนผ้า รวมทั้งชมผลงานผ้าไหมหลากสีและสัมผัสพื้นผิวของงานจริง การแวะชมช่วยให้เห็นเวลาฝีมือที่อยู่เบื้องหลังผ้าแต่ละผืน หากต้องการเลือกซื้อสินค้าหรือชมการทอ ควรสอบถามเวลาเปิดและรอบสาธิตกับชุมชนล่วงหน้า และขออนุญาตก่อนถ่ายภาพช่างทอ</p>
         <div class="chips">
           <span class="chip">ลายหางกระรอก</span>
           <span class="chip">กี่ทอมือโบราณ</span>
@@ -516,16 +542,17 @@
   <!-- 6 : วนอุทยานพนมสวาย -->
   <section class="page stop" data-theme="noon2">
     <div class="stop-inner">
-      <div class="stop-visual" style="background:linear-gradient(160deg, var(--noon), var(--rice));">
+      <div class="stop-visual" data-images="assets/images/06.jpg|assets/images/06-Picsart-AiImageEnhancer.jpg|__placeholder__" style="background:linear-gradient(160deg, var(--noon), var(--rice));">
         <div class="weave"></div>
         <div class="period-badge label"></div>
         <div class="idx"></div>
-        <img src="06.jpg" alt="วนอุทยานพนมสวาย">
+        <img src="assets/images/06.jpg" alt="วนอุทยานพนมสวาย">
       </div>
       <div class="stop-content" style="--accent:var(--noon); --accent-deep:var(--rice);">
         <p class="eyebrow" style="color:var(--rice)"></p>
         <h2 class="display">วนอุทยานพนมสวาย</h2>
-        <p class="desc">ภูเขาไฟเก่าที่กลายเป็นปอดสีเขียวของจังหวัด จุดพักผ่อนหลังบ่ายที่เต็มไปด้วยธรรมชาติ มีบันไดขึ้นสู่ยอดเขาเพื่อกราบสักการะสิ่งศักดิ์สิทธิ์และชมทัศนียภาพของเมืองสุรินทร์แบบพาโนรามา เหมาะกับช่วงแดดร่มลมตกของบ่ายแก่</p>
+        <p class="desc">วนอุทยานพนมสวายเป็นภูเขาที่มีความสำคัญทั้งด้านธรรมชาติและความศรัทธาของคนในท้องถิ่น เส้นทางขึ้นเขาพาไปยังจุดสักการะและมุมชมวิวที่มองเห็นผืนป่าและพื้นที่รอบเมืองสุรินทร์ บรรยากาศร่มรื่นเหมาะกับการพักจากการเดินทางและใช้เวลาเดินชมอย่างไม่เร่งรีบ หากมาในช่วงบ่ายแก่จะได้แสงอ่อนลง แต่ควรเผื่อเวลาเดินขึ้นลงก่อนฟ้ามืด เตรียมน้ำดื่ม รองเท้าที่กระชับ และช่วยกันรักษาความสะอาดของพื้นที่</p>
+        <p class="visit-fee"><strong>ค่าใช้จ่ายกิจกรรม:</strong> 20 บาท/คน</p>
         <div class="chips">
           <span class="chip">จุดชมวิวเมืองสุรินทร์</span>
           <span class="chip">เดินป่าเบา ๆ</span>
@@ -539,16 +566,16 @@
   <!-- 7 : อนุสาวรีย์พระยาสุรินทร์ฯ -->
   <section class="page stop" data-theme="dusk">
     <div class="stop-inner">
-      <div class="stop-visual" style="background:linear-gradient(160deg, var(--rice), var(--dusk-deep));">
+      <div class="stop-visual" data-images="assets/images/อนุ1.jpg|assets/images/อนุ3.jpg|assets/images/อนุ4.jpg" style="background:linear-gradient(160deg, var(--rice), var(--dusk-deep));">
         <div class="weave"></div>
         <div class="period-badge label"></div>
         <div class="idx"></div>
-        <img src="07-Picsart-AiImageEnhancer.jpg" alt="อนุสาวรีย์พระยาสุรินทร์ภักดีศรีณรงค์จางวาง">
+        <img src="assets/images/07-Picsart-AiImageEnhancer.jpg" alt="อนุสาวรีย์พระยาสุรินทร์ภักดีศรีณรงค์จางวาง">
       </div>
       <div class="stop-content" style="--accent:var(--rice); --accent-deep:var(--dusk-deep);">
         <p class="eyebrow" style="color:var(--dusk-deep)"></p>
         <h2 class="display">อนุสาวรีย์พระยาสุรินทร์ภักดีศรีณรงค์จางวาง</h2>
-        <p class="desc">อนุสรณ์สถานของเจ้าเมืองคนแรกผู้ก่อร่างสร้างเมืองสุรินทร์ เป็นจุดสักการะที่ชาวสุรินทร์เคารพนับถือ และเป็นจุดเริ่มต้นของช่วงเย็นที่พาไปสัมผัสวิถีชีวิตเมืองอย่างใกล้ชิด ก่อนต่อไปยังปราสาทบ้านพลวงและตลาดยามเย็น</p>
+        <p class="desc">อนุสาวรีย์พระยาสุรินทร์ภักดีศรีณรงค์จางวางสร้างขึ้นเพื่อรำลึกถึงเจ้าเมืองคนสำคัญในประวัติศาสตร์ของสุรินทร์ และเป็นสถานที่ที่ชาวเมืองกับผู้มาเยือนแวะมาสักการะ ตัวอนุสาวรีย์ตั้งอยู่ท่ามกลางพื้นที่เมือง จึงเป็นจุดแวะที่เดินทางต่อไปยังสถานที่อื่นได้สะดวก ลองสังเกตรายละเอียดของอนุสาวรีย์และบรรยากาศรอบบริเวณ ซึ่งสะท้อนความผูกพันของชาวสุรินทร์กับประวัติศาสตร์ท้องถิ่น หากเข้าร่วมสักการะควรแต่งกายสุภาพและเว้นพื้นที่ให้ผู้ที่มาประกอบพิธี</p>
         <div class="chips">
           <span class="chip">สักการะสิ่งศักดิ์สิทธิ์</span>
           <span class="chip">ประวัติศาสตร์เมือง</span>
@@ -561,16 +588,17 @@
   <!-- 8 : ปราสาทบ้านพลวง -->
   <section class="page stop" data-theme="dusk2">
     <div class="stop-inner">
-      <div class="stop-visual" style="background:linear-gradient(160deg, var(--dusk), var(--night-deep));">
+      <div class="stop-visual" data-images="assets/images/08-Picsart-AiImageEnhancer.jpg|assets/images/08.jpg|__placeholder__" style="background:linear-gradient(160deg, var(--dusk), var(--night-deep));">
         <div class="weave"></div>
         <div class="period-badge label"></div>
         <div class="idx"></div>
-        <img src="08-Picsart-AiImageEnhancer.jpg  " alt="ปราสาทบ้านพลวง">
+        <img src="assets/images/08-Picsart-AiImageEnhancer.jpg" alt="ปราสาทบ้านพลวง">
       </div>
       <div class="stop-content" style="--accent:var(--dusk); --accent-deep:var(--night-deep);">
         <p class="eyebrow" style="color:var(--dusk-deep)"></p>
         <h2 class="display">ปราสาทบ้านพลวง</h2>
-        <p class="desc">ปราสาทหินทรายสีชมพูขนาดเล็กแต่งดงามด้วยลวดลายจำหลักที่คมชัดที่สุดแห่งหนึ่งของอีสานใต้ ยิ่งงดงามขึ้นในแสงเย็น  สะท้อนศิลปะสถาปัตยกรรมขอมโบราณที่ยังคงหลงเหลือรายละเอียดไว้อย่างสมบูรณ์</p>
+        <p class="desc">ปราสาทบ้านพลวงเป็นปราสาทหินทรายขนาดกะทัดรัดที่โดดเด่นด้วยโทนสีของหินและลวดลายแกะสลักบริเวณหน้าบันกับทับหลัง แม้มีองค์ปราสาทหลักเพียงหลังเดียว แต่รายละเอียดทางสถาปัตยกรรมยังชวนให้เดินชมใกล้ ๆ และสังเกตฝีมือช่างโบราณในแต่ละส่วน พื้นที่โดยรอบค่อนข้างเปิด ทำให้มองเห็นตัวปราสาทได้ชัดจากหลายมุม ช่วงเช้าหรือเย็นให้แสงสวยสำหรับถ่ายภาพ ควรเดินตามทางที่จัดไว้และไม่สัมผัสหรือปีนส่วนของโบราณสถาน</p>
+        <p class="visit-fee"><strong>ค่าเข้าชม:</strong> คนไทย 10 บาท, ชาวต่างชาติ 50 บาท</p>
         <div class="chips">
           <span class="chip">หินทรายสีชมพู</span>
           <span class="chip">ลวดลายจำหลักคมชัด</span>
@@ -583,16 +611,16 @@
   <!-- 9 : ตลาดไนท์บาร์ซ่าสุรินทร์ -->
   <section class="page stop" data-theme="dusk3">
     <div class="stop-inner">
-      <div class="stop-visual" style="background:linear-gradient(160deg, var(--night-deep), var(--night));">
+      <div class="stop-visual" data-images="assets/images/ตลาด1.jpg|assets/images/ตลาด2.jpg|assets/images/ตลาด4.jpg" style="background:linear-gradient(160deg, var(--night-deep), var(--night));">
         <div class="weave"></div>
         <div class="period-badge label"></div>
         <div class="idx"></div>
-        <img src="market-Picsart-AiImageEnhancer.jpg" alt="ตลาดไนท์บาร์ซ่าสุรินทร์">
+        <img src="assets/images/market-Picsart-AiImageEnhancer.jpg" alt="ตลาดไนท์บาร์ซ่าสุรินทร์">
       </div>
       <div class="stop-content" style="--accent:var(--dusk-deep); --accent-deep:var(--night-deep);">
         <p class="eyebrow" style="color:var(--dusk-deep)"></p>
         <h2 class="display">ตลาดไนท์บาร์ซ่าสุรินทร์</h2>
-        <p class="desc">ตลาดยามเย็นที่เต็มไปด้วยอาหารหลากหลายชนิด</p>
+        <p class="desc">ตลาดไนท์บาร์ซ่าสุรินทร์เป็นจุดแวะเติมพลังและสัมผัสบรรยากาศเมืองในช่วงค่ำ มีร้านอาหารและแผงขายของให้เลือกตั้งแต่อาหารจานเดียว ของกินเล่น ไปจนถึงเครื่องดื่ม เหมาะกับการเดินเลือกชิมหลายอย่างหรือซื้อกลับไปแบ่งกัน หลังพระอาทิตย์ตกตลาดจะคึกคักขึ้นและมีผู้คนสัญจรหนาแน่น ควรพกเงินสดย่อย เตรียมเวลาเผื่อหาที่จอดรถ และระมัดระวังรถบริเวณทางเดิน ทั้งนี้วันและเวลาเปิดของร้านค้าอาจแตกต่างกัน ควรตรวจสอบก่อนเดินทาง</p>
         <div class="chips">
           <span class="chip">อาหาร</span>
           <span class="chip">ของกินมากมาย</span>
@@ -646,6 +674,42 @@
     dotsWrap.appendChild(dot);
   });
 
+  document.querySelectorAll('.stop-visual[data-images]').forEach(visual=>{
+    const image = visual.querySelector('img');
+    const images = visual.dataset.images.split('|');
+    let imageIndex = 0;
+    const placeholder = document.createElement('div');
+    placeholder.className = 'gallery-placeholder';
+    placeholder.innerHTML = '<span>ภาพที่ 3</span><strong>รอเพิ่มรูปภาพ</strong>';
+    visual.appendChild(placeholder);
+    const controls = document.createElement('div');
+    controls.className = 'gallery-controls';
+    controls.innerHTML = '<button type="button" data-step="-1" aria-label="ดูภาพก่อนหน้า">‹</button><span class="gallery-count" aria-live="polite"></span><button type="button" data-step="1" aria-label="ดูภาพถัดไป">›</button>';
+    visual.appendChild(controls);
+
+    const showImage = nextIndex=>{
+      imageIndex = (nextIndex + images.length) % images.length;
+      const isPlaceholder = images[imageIndex] === '__placeholder__';
+      image.hidden = isPlaceholder;
+      placeholder.hidden = !isPlaceholder;
+      if(!isPlaceholder) image.src = images[imageIndex];
+      controls.querySelector('.gallery-count').textContent = `${imageIndex + 1} / ${images.length}`;
+    };
+    controls.addEventListener('click', event=>{
+      const button = event.target.closest('button[data-step]');
+      if(button) showImage(imageIndex + Number(button.dataset.step));
+    });
+    visual.addEventListener('touchstart', event=>{
+      visual.dataset.galleryTouchX = event.touches[0].clientX;
+    }, {passive:true});
+    visual.addEventListener('touchend', event=>{
+      const startX = Number(visual.dataset.galleryTouchX);
+      const deltaX = event.changedTouches[0].clientX - startX;
+      if(Math.abs(deltaX) > 45) showImage(imageIndex + (deltaX < 0 ? 1 : -1));
+    }, {passive:true});
+    showImage(0);
+  });
+
   function render(){
     book.style.transform = `translateX(-${idx * 100}vw)`;
     document.querySelectorAll('#dots span').forEach((d,i)=> d.classList.toggle('active', i===idx));
@@ -686,12 +750,20 @@
   });
 
   let touchStartX = 0;
-  document.addEventListener('touchstart', e=> touchStartX = e.touches[0].clientX);
+  let touchStartedInGallery = false;
+  document.addEventListener('touchstart', e=>{
+    touchStartedInGallery = Boolean(e.target.closest('.stop-visual[data-images]'));
+    if(!touchStartedInGallery) touchStartX = e.touches[0].clientX;
+  }, {passive:true});
   document.addEventListener('touchend', e=>{
+    if(touchStartedInGallery){
+      touchStartedInGallery = false;
+      return;
+    }
     const dx = e.changedTouches[0].clientX - touchStartX;
     if(dx > 60) prev();
     if(dx < -60) next();
-  });
+  }, {passive:true});
   
   const routePlaces = [
     ['หมู่บ้านช้างบ้านตากลาง', 15.287833, 103.485667, '15.287833,103.485667 หมู่บ้านช้างบ้านตากลาง สุรินทร์', 'https://maps.app.goo.gl/eDDkZC4jYzxVgX1Z7'],
